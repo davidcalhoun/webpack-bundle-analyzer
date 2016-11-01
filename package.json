@@ -1,6 +1,6 @@
 {
   "name": "webpack-bundle-analyzer",
-  "version": "1.2.5",
+  "version": "1.3.0",
   "description": "Webpack plugin and CLI utility that represents bundle content as convenient interactive zoomable treemap",
   "author": "Yury Grunin <grunin.ya@ya.ru>",
   "license": "MIT",
@@ -19,7 +19,11 @@
     "node": ">= 0.10"
   },
   "scripts": {
-    "prepublish": "gulp build"
+    "start": "gulp watch",
+    "build": "gulp build",
+    "prepublish": "npm run build && npm test",
+    "test": "mocha --compilers js:babel-core/register -r babel-polyfill",
+    "test-watch": "mocha --watch --reporter min --compilers js:babel-core/register -r babel-polyfill"
   },
   "files": [
     "client",
@@ -29,28 +33,30 @@
   ],
   "dependencies": {
     "acorn": "^4.0.3",
-    "babel-runtime": "^6.18.0",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
     "filesize": "^3.3.0",
     "lodash": "^4.16.4",
-    "opener": "^1.4.2",
-    "pug": "^2.0.0-beta6",
-    "stream-combiner2": "^1.1.1"
+    "opener": "^1.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-2": "^6.18.0",
+    "chai": "^3.5.0",
     "del": "^2.2.2",
     "eslint": "^3.8.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-plumber": "^1.1.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.10"
+    "gulp-watch": "^4.3.10",
+    "mocha": "^3.1.2",
+    "stream-combiner2": "^1.1.1"
   },
   "keywords": [
     "webpack",
